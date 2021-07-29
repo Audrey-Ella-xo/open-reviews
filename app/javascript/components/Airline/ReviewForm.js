@@ -7,13 +7,13 @@ const ReviewForm = (props) => {
     // const total = props.reviews.length
     return (
         <div className='wrapper'>
-            <form>
-                <div className=''>Have an experience with [name]? share your review</div>
+            <form onSubmit={props.handleSubmit}>
+                <div className=''>Have an experience with {props.attributes.name}? share your review</div>
                 <div className='field'>
-                    <input type="text" name="title" placeholder="Review Title"/>
+                    <input onChange={props.handleChange} value={props.review.title} type="text" name="title" placeholder="Review Title"/>
                 </div>
                 <div className='field'>
-                    <input type="text" name="Description" placeholder="Review Description"/>
+                    <input onChange={props.handleChange} value={props.review.description} type="text" name="Description" placeholder="Review Description"/>
                 </div>
                 <div className='field'>
                     <div className ="rating-container">
