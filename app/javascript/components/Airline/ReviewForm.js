@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, Fragment} from 'react'
 import styled from 'styled-components'
 
 const RatingContainer = styled.div`
@@ -29,14 +29,10 @@ const ReviewForm = (props) => {
     
     const ratingOptions = [5,4,3,2,1].map((score, index) => {
         return (
-            <div>
-                <input 
-                    type='radio' value={score} name='rating' 
-                    onChange={() => console.log('selected:',score)}
-                    id={`rating-${score}`}
-                />
-                <label></label>
-            </div>
+            <Fragment>
+                <input type="radio" value={score} checked={props.review.score == score} onChange={()=>console.log('onChange')} name="rating" id={`rating-${score}`}/>
+                <label onClick={props.setRating.bind(this, score)}></label>
+            </Fragment>
         )
     })
     return (
